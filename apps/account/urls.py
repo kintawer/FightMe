@@ -1,13 +1,10 @@
 from django.urls import path, include
+from .views import Logout
 
-from rest_framework import routers
-
-from .api.views import AccountViewSet
-
-
-router = routers.DefaultRouter()
-router.register(r'accounts', AccountViewSet)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include('social_django.urls', namespace='social')),
+    path('logout/', Logout.as_view()),
 ]
+
+

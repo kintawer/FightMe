@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    
+    'social_django',
+
     'apps.account',
     'apps.rating',
     'apps.game',
@@ -51,13 +52,13 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'fightme.api.urls'
+ROOT_URLCONF = 'fightme.urls'
 
 TEMPLATES = [
     {
@@ -95,6 +96,13 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'account.Account'
 
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.vk.VKOAuth2',  # авторизация ВК
+    'django.contrib.auth.backends.ModelBackend',  # классическая авторизация через лог/пасс
+)
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -109,6 +117,20 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# Social Auth settings
+# VK
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_VK_OAUTH2_KEY', 'xxx')  # ID приложения
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_VK_OAUTH2_SECRET', 'xxx')  # Секретный ключ
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+
+# Discord
+
+
+# Steam
+
+LOGIN_REDIRECT_URL = '/'
 
 
 # Internationalization
