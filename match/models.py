@@ -1,8 +1,7 @@
 from django.db import models
 
-from apps.account.models import Account
-from apps.game.models import Game, Player
-from apps.tournament.models import Tournament
+from game import Game, Player
+from tournament import Tournament
 
 
 MATCH_STATUSES = (

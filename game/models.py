@@ -1,5 +1,5 @@
 from django.db import models
-from apps.account.models import Account
+from account.models import Account
 
 
 class Game(models.Model):

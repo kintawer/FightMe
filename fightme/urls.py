@@ -5,11 +5,11 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from apps.account.api.views import AccountViewSet, AccountAPIView
-from apps.game.api.views import GameViewSet, PlayerViewSet
-from apps.match.api.views import MatchViewSet
-from apps.rating.api.views import RatingViewSet
-from apps.tournament.api.views import TournamentViewSet
+from account import AccountViewSet, AccountAPIView
+from game.api import GameViewSet, PlayerViewSet
+from match.api.views import MatchViewSet
+from rating.api import RatingViewSet
+from tournament.api import TournamentViewSet
 
 
 # API urls

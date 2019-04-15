@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
 
-    'apps.account',
-    'apps.rating',
-    'apps.game',
-    'apps.match',
-    'apps.tournament',
+    'account',
+    'rating',
+    'game',
+    'match',
+    'tournament',
 ]
 
 MIDDLEWARE = [

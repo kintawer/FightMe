@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.game.models import Game, Player
+from game import Game, Player
 
 
 class Tournament(models.Model):
