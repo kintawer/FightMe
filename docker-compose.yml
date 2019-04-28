@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - '5432:5432'
+    restart: always
+    environment:
+      POSTGRES_USER: 'fightme'
+      POSTGRES_PASSWORD: 'fightme'
+      POSTGRES_DB: 'fightme'
+    volumes:
+      - ./docker/data:/var/lib/postgresql/data/
+      # если надо кастомный sql скрипт инициализации 
+      # - ./docker/init:/docker-entrypoint-initdb.d/
+  
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - db

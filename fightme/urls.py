@@ -5,11 +5,11 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from account import AccountViewSet, AccountAPIView
-from game.api import GameViewSet, PlayerViewSet
+from account.api.views import AccountViewSet, AccountAPIView
+from game.api.views import GameViewSet, PlayerViewSet
 from match.api.views import MatchViewSet
-from rating.api import RatingViewSet
-from tournament.api import TournamentViewSet
+from rating.api.views import RatingViewSet
+from tournament.api.views import TournamentViewSet
 
 
 # API urls
@@ -30,6 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/account/', AccountAPIView.as_view()),
-    path('account/', include('apps.account.urls'))
+    path('account/', include('account.urls'))
 
 ]

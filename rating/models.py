@@ -1,6 +1,6 @@
 from django.db import models
 
-from game import Player
+from game.models import Player
 
 
 class Rating(models.Model):
